@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/inicio" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:title="@string/ordena_en_l_nea" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:title="@string/men" />
+        <item
+            android:id="@+id/nav_promociones"
+            android:title="@string/promociones" />
+        <item
+            android:id="@+id/nav_tiendas"
+            android:title="@string/tiendas" />
+        <item
+            android:id="@+id/nav_pizzatracker"
+            android:title="@string/pizza_tracker" />
+
+    </group>
+</menu>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa</title>
+    <!-- Enlace a la hoja de estilo de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor del mapa -->
+    <div id="map"></div>
+    <!-- Enlace a la biblioteca de Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>
+        // Inicialización del mapa en las coordenadas de Lima
+        var map = L.map('map').setView([-12.0464, -77.0428], 14);
+        // Agregar la capa de mapa base de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        // Agregar marcador para el Palacio de Gobierno
+        var markerPalacio = L.marker([-12.046374, -77.042793]).addTo(map)
+            .bindPopup('<b>Palacio de Gobierno</b><br>Lima, Perú').openPopup();
+        // Agregar marcador para SENATI Lima
+        var markerSENATI = L.marker([-12.024102, -77.049546]).addTo(map)
+            .bindPopup('<b>SENATI Lima</b><br>Lima, Perú');
+        // Dibujar una línea que conecta el Palacio de Gobierno con SENATI
+        var latlngs = [
+            [-12.046374, -77.042793], // Palacio de Gobierno
+            [-12.024102, -77.049546] // SENATI
+        ];
+        var polyline = L.polyline(latlngs, { color: 'blue' }).addTo(map);
+        // Ajustar el zoom al área de la ruta
+        map.fitBounds(polyline.getBounds());
+
+        L.Control.geocoder().addTo(map);
+    </script>
+</body>
+
+</html>
